@@ -2,19 +2,16 @@
 
 var $body = $('body');
 
-$body.append('<input id="input" type="text">');
-$body.append('<textarea id="textarea"></textarea>');
+$body.append('<input id="input" type="text" value="あいうえおかきくけこさしすせそ">');
+$body.append('<textarea id="textarea">あいうえお\nかきくけこさしすせそ\n<h1>たちつてと</h1></textarea>');
 
-var $input = $('#input').val('あいうえおかきくけこさしすせそ');
-var $textarea = $('#textarea').val('あいうえお\n' +
-    'かきくけこさしすせそ\n' +
-    '<h1>たちつてと</h1>');
-
-var strInput = $input[0].value;
+var $input = $('#input');
+var $textarea = $('#textarea');
 
 // IEでは改行コードが \r\n で処理されるため、
 // value 値を直接取らないと期待した通りに動かない
 // (val() で取ると改行コードが \n になる)
+var strInput = $input[0].value;
 var strTextarea = $textarea[0].value;
 
 module('$.fn.selection');
@@ -27,7 +24,6 @@ test('getPos/get Test', function () {
     $target = $input;
     str = strInput;
 
-    $target.val(str);
     deepEqual($target.selection('getPos'), {start: 0, end: 0});
     equal($target.selection('get'), '');
 
@@ -39,7 +35,6 @@ test('getPos/get Test', function () {
     $target = $textarea;
     str = strTextarea;
 
-    $target.val(str);
     deepEqual($target.selection('getPos'), {start: 0, end: 0});
     equal($target.selection('get'), '');
 
