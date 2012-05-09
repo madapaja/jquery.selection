@@ -2,73 +2,282 @@
 <html>
 
   <head>
-    <meta charset='utf-8' />
+    <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="jQuery.selection : jQuery Plugin" />
+    <meta name="description" content="jQuery.selection - jQuery plugin : 選択範囲のテキスト操作 / キャレット操作 jQuery プラグイン" />
 
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
-    <title>jQuery.selection</title>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="javascripts/bootstrap.min.js"></script>
+    <script src="src/jquery.selection.js"></script>
+
+    <title>jQuery.selection - jQuery plugin</title>
+
+    <script type="text/javascript">
+      $(function(){
+        /* input */
+        $('#sel-input').click(function(){
+            // インプットの選択範囲をアラートする
+            alert($('#input').selection());
+            $('#input').focus();
+        });
+
+        /* textarea */
+        // 強調タグで囲む
+        $('#wrap-strong').click(function(){
+          $('#textarea')
+            // <strong> を選択テキストの前に挿入
+            .selection('insert', {text: '<strong>', mode: 'before'})
+            // </strong> を選択テキストの後に挿入
+            .selection('insert', {text: '</strong>', mode: 'after'});
+        });
+
+        // リンクタグで囲む
+        $('#wrap-link').click(function(){
+          // 選択テキストを取得
+          var selText = $('#textarea').selection();
+
+          $('#textarea')
+            // <a href=" を選択テキストの前に挿入
+            .selection('insert', {text: '<a href="', mode: 'before'})
+            // 選択テキストを http:// に置き換える（http:// を選択状態に）
+            .selection('replace', {text: 'http://'})
+            // ">選択テキスト</a> を選択テキストの後に挿入
+            .selection('insert', {text: '">'+ selText + '</a>', mode: 'after'});
+        });
+
+        // 選択テキストを取得
+        $('#sel-textarea').click(function(){
+          // テキストエリアの選択範囲をアラートする
+          alert($('#textarea').selection());
+          $('#textarea').focus();
+        });
+
+        /* selection */
+        // 選択部分のテキストを取得
+        $('#sel-text').click(function(){
+          // 選択部分のテキストを取得し、テキストエリアを置き換える
+          $('#result').text($.selection());
+        });
+
+        // 選択部分のHTMLを取得
+        $('#sel-html').click(function(){
+          // 選択部分のHTMLを取得し、テキストエリアを置き換える
+          $('#result').text($.selection('html'));
+        });
+      });
+    </script>
   </head>
 
   <body>
-
     <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/madapaja/jquery.selection">View on GitHub</a>
+    <div id="header_wrap">
+      <div class="container">
+        <div class="row">
+          <header class="span12">
+            <a id="forkme_banner" href="https://github.com/madapaja/jquery.selection">View on GitHub</a>
 
-          <h1 id="project_title">jQuery.selection</h1>
-          <h2 id="project_tagline">jQuery Plugin</h2>
+            <h1>jQuery.selection</h1>
+            <p>選択範囲のテキスト操作 / キャレット操作 jQuery プラグイン</p>
 
             <section id="downloads">
               <a class="zip_download_link" href="https://github.com/madapaja/jquery.selection/zipball/master">Download this project as a .zip file</a>
               <a class="tar_download_link" href="https://github.com/madapaja/jquery.selection/tarball/master">Download this project as a tar.gz file</a>
             </section>
-        </header>
+          </header>
+        </div>
+      </div>
     </div>
 
     <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>Welcome to GitHub Pages.</h3>
+    <div class="container" id="main_content_wrap">
+      <div class="row">
+        <section class="span12" id="main">
+          <section id="whats-this">
+            <h1>これは何？</h1>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+            <p>選択範囲のテキストを操作するための jQuery プラグインです。</p>
+            <p>テキスト選択（キャレット）位置や、選択テキストを取得したり、選択されているテキストの置き換えや挿入などを行えます。</p>
+          </section><!-- /#whats-this -->
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+          <section id="how-to-use">
+            <h1>使い方</h1>
 
-<h3>Designer Templates</h3>
+            <p>jQuery 本体と、このプラグインを読み込んで使用します。</p>
+            <p>具体的には下記のように使用します。</p>
+            <script src="https://gist.github.com/2642215.js?file=example.html"></script>
+          </section><!-- /#how-to-use -->
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+          <section id="api">
+            <h1><a href="https://github.com/madapaja/jquery.selection/wiki/API">API</a></h1>
 
-<h3>Rather Drive Stick?</h3>
+            <p>このプラグインに含まれる <a href="https://github.com/madapaja/jquery.selection/wiki/API">API</a> の詳細は、
+            <a href="https://github.com/madapaja/jquery.selection/wiki/API" title="API - madapaja/jquery.selection Wiki">こちらから</a>ご覧ください。</p>
+          </section><!-- /#api -->
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+          <section id="demo">
+            <h1>デモ</h1>
+            <p>jQuery.selection プラグインのデモをいくつか紹介します。</p>
 
-<h3>Authors and Contributors</h3>
+            <section id="demo-selection">
+              <h2>入力フォームの選択テキスト操作</h2>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+              <section id="demo-selection-input">
+                <h3>デモ1</h3>
+                <p>テキストボックス（1行テキスト）内で選択されているテキストを取得するデモです。</p>
 
-<h3>Support or Contact</h3>
+                <ul class="nav nav-tabs">
+                  <li class="active"><a href="#tab-demo-input-demo" data-toggle="tab">Demo</a></li>
+                  <li><a href="#tab-demo-input-js" data-toggle="tab">Javascript</a></li>
+                  <li><a href="#tab-demo-input-html" data-toggle="tab">HTML</a></li>
+                </ul>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
+                <div class="tab-content">
+                  <div class="tab-pane active" id="tab-demo-input-demo">
+                    <p>
+                      <input type="text" id="input" class="span12" value="これはテキストボックスです。文字列を選択した上で、下のボタンをくりっくしてください。" /><br />
+                      <input type="button" id="sel-input" class="btn" value="選択テキストを取得" />
+                    </p>
+                  </div>
+                  <div class="tab-pane" id="tab-demo-input-js">
+                    <script src="https://gist.github.com/2642215.js?file=input.js"></script>
+                  </div>
+                  <div class="tab-pane" id="tab-demo-input-html">
+                    <script src="https://gist.github.com/2642215.js?file=input.html"></script>
+                  </div>
+                </div>
+
+              </section><!-- /#demo-selection-input -->
+
+              <section id="demo-selection-textarea">
+                <h3>デモ2</h3>
+                <p>テキストエリアの選択テキストに対して挿入/置き換えを行うデモです。</p>
+
+                <ul class="nav nav-tabs">
+                  <li class="active"><a href="#tab-demo-textarea-demo" data-toggle="tab">Demo</a></li>
+                  <li><a href="#tab-demo-textarea-js" data-toggle="tab">Javascript</a></li>
+                  <li><a href="#tab-demo-textarea-html" data-toggle="tab">HTML</a></li>
+                </ul>
+
+                <div class="tab-content">
+                  <div class="tab-pane active" id="tab-demo-textarea-demo">
+                    <p>
+                      <input type="button" id="wrap-strong" class="btn" value="強調タグで囲む" />
+                      <input type="button" id="wrap-link" class="btn" value="リンクタグで囲む" />
+                    </p>
+
+                    <textarea id="textarea" class="span12" style="height: 8em;">
+色彩映画の技術陣の人々は、日本民族の豊富な色彩感と、そして絵巻の伝統で鍛えられたる色彩構成の伝統を、世界にデビューする機会を、今眼前にしたことを強く意識すべきである。
+次のことが、一版に注意されるべきであろう。
+
+一　色彩のもつ韻律的な構成。
+二　そのヴァリエーションへの注意。
+三　全体を見透しての、盛りあげに用いられるところの色彩の用意。
+四　全色彩トーンを何に置くべきか。
+さらに、いかに配置すべきか。
+例えば、海の主題を取りあげてそれを貫いてみるごときそれ。あるいは、全体を、淡くするかまたはコントラストを強くするべきか。
+五　シナリオの筋と、色との配合、同調すべき場合と、むしろコントラストを強くする場合。
+六　シナリオでは説明となり、ダレるところを、色彩のリズムで救うという新たな救済策のあらわれたこと。
+七　季感のもつ芸術的役割りがますます重大となってきたこと。
+
+中井正一「色彩映画のシナリオ」（青空文庫）より引用</textarea>
+
+                    <p>
+                      <input type="button" id="sel-textarea" class="btn" value="選択テキストを取得" />
+                    </p>
+                  </div>
+                  <div class="tab-pane" id="tab-demo-textarea-js">
+                    <script src="https://gist.github.com/2642215.js?file=textarea.js"></script>
+                  </div>
+                  <div class="tab-pane" id="tab-demo-textarea-html">
+                    <script src="https://gist.github.com/2642215.js?file=textarea.html"></script>
+                  </div>
+                </div>
+              </section><!-- /#demo-selection-textarea -->
+            </section><!-- /#demo-fn.selection -->
+
+            <section id="demo-jQuery-selection">
+              <h2>$.selection() のデモ</h2>
+              <p>ウィンドウ内の選択部分のテキスト/HTMLを取得するデモです。</p>
+
+              <ul class="nav nav-tabs">
+                <li class="active"><a href="#tab-demo-selection-demo" data-toggle="tab">Demo</a></li>
+                <li><a href="#tab-demo-selection-js" data-toggle="tab">Javascript</a></li>
+                <li><a href="#tab-demo-selection-html" data-toggle="tab">HTML</a></li>
+              </ul>
+
+              <div class="tab-content">
+                <div class="tab-pane active" id="tab-demo-selection-demo">
+                  <p>適当な文字を選択して、下のボタンでテキスト/HTMLの取得ができます。</p>
+
+                  <blockquote>
+                    <p>色彩映画の技術陣の人々は、日本民族の豊富な色彩感と、そして絵巻の伝統で鍛えられたる色彩構成の伝統を、世界にデビューする機会を、今眼前にしたことを強く意識すべきである。</p>
+
+                    <p>次のことが、一版に注意されるべきであろう。</p>
+
+                    <ol>
+                      <li>色彩のもつ韻律的な構成。</li>
+                      <li>そのヴァリエーションへの注意。</li>
+                      <li>全体を見透しての、盛りあげに用いられるところの色彩の用意。</li>
+                      <li>
+                        <p>
+                          全色彩トーンを何に置くべきか。<br />
+                          さらに、いかに配置すべきか。
+                        </p>
+                        <p>例えば、海の主題を取りあげてそれを貫いてみるごときそれ。あるいは、全体を、淡くするかまたはコントラストを強くするべきか。</p>
+                      </li>
+                      <li>シナリオの筋と、色との配合、同調すべき場合と、むしろコントラストを強くする場合。</li>
+                      <li>シナリオでは説明となり、ダレるところを、色彩のリズムで救うという新たな救済策のあらわれたこと。</li>
+                      <li>季感のもつ芸術的役割りがますます重大となってきたこと。</li>
+                    </ol>
+
+                    <small><a href="http://www.aozora.gr.jp/cards/001166/files/43835_18208.html">中井正一「<cite>色彩映画のシナリオ</cite>」（青空文庫）</a></small>
+                  </blockquote>
+
+                  <p>
+                    <input type="button" id="sel-text" class="btn" value="選択部分のテキストを取得" />
+                    <input type="button" id="sel-html" class="btn" value="選択部分のHTMLを取得" />
+                  </p>
+
+                  <strong>【取得結果が下記に表示されます】</strong>
+                  <textarea id="result" class="span12" style="height: 8em;" readonly="readonly"></textarea>
+                </div>
+                <div class="tab-pane" id="tab-demo-selection-js">
+                  <script src="https://gist.github.com/2642215.js?file=selection.js"></script>
+                </div>
+                <div class="tab-pane" id="tab-demo-selection-html">
+                  <script src="https://gist.github.com/2642215.js?file=selection.html"></script>
+                </div>
+              </div>
+            </section><!-- /#demo-jQuery-selection -->
+          </section><!-- /#demo -->
+
+          <section id="license">
+            <h1>ライセンス/連絡先</h1>
+
+            <p>The MIT License</p>
+            <p>Copyright &copy; 2010-2012 Koji Iwasaki (<a href="https://twitter.com/madapaja">@madapaja</a>).</p>
+            <p>バグ報告は <a href="https://github.com/madapaja/jquery.selection/issues">Issues</a> に投げていただくか、Pull request をください。</p>
+          </section><!-- /#license -->
+
+        </section><!-- /#main -->
+      </div>
     </div>
 
     <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">jQuery.selection maintained by <a href="https://github.com/madapaja">madapaja</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
+    <div id="footer_wrap">
+      <div class="container">
+        <div class="row">
+          <footer class="span12">
+            <p>jQuery.selection maintained by <a href="https://twitter.com/madapaja">@madapaja</a></p>
+            <p>Copyright &copy; 2010-2012 Koji Iwasaki (@madapaja).</p>
+          </footer>
+        </div>
+      </div>
     </div>
-
-    
 
   </body>
 </html>
