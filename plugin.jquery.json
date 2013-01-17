@@ -1,0 +1,23 @@
+{
+    "name": "selection",
+    "title": "jquery.selection",
+    "version": "1.0.0",
+    "author": {
+        "name": "Koji Iwasaki",
+        "url": "http://blog.madapaja.net"
+    },
+    "dependencies": {
+        "jquery": ">=1.7.0"
+    },
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://raw.github.com/madapaja/jquery.selection/master/src/jquery.selection.js"
+        }
+    ],
+    "files": ["src/jquery.selection.js"],
+    "description": "selection text/caret operation - jQuery pulgin | 選択範囲のテキスト操作 / キャレット操作 ",
+    "keywords": ["selection", "caret"],
+    "homepage": "https://github.com/madapaja/jquery.selection",
+    "docs": "http://madapaja.github.com/jquery.selection/"
+}
