@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="jQuery.selection - selection text/caret operation - jQuery pulgin" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="javascripts/bootstrap.min.js"></script>
+    <script src="src/jquery.selection.js"></script>
+
+    <title>jQuery.selection - jQuery plugin</title>
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <div id="header_wrap">
+      <div class="container">
+        <div class="row">
+          <header class="span12">
+            <a id="forkme_banner" href="https://github.com/madapaja/jquery.selection">View on GitHub</a>
+
+            <h1>jQuery.selection</h1>
+            <p>selection text/caret operation - jQuery pulgin</p>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/madapaja/jquery.selection/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/madapaja/jquery.selection/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+          </header>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="container" id="main_content_wrap">
+      <div class="row">
+        <section class="span12" id="main">
+          <p><a href="./ja_jp.html">日本語版</a></p>
+
+          <section id="whats-this">
+            <h1>What is this?</h1>
+
+            <p>jQuery.selection is a jQuery plugin that operate selection text/caret.</p>
+            <p>You can get selection text/caret position information or get selected text, replace/insert selected text.</p>
+          </section><!-- /#whats-this -->
+
+
+          <section id="how-to-use">
+            <h1>How to use?</h1>
+
+            <p>jQuery.selection plugin uses the <a href="http://jquery.com/">jQuery</a>, only.</p>
+            <p>Include these two javascript files in your header as follows.</p>
+            <script src="https://gist.github.com/2642215.js?file=example.html"></script>
+          </section><!-- /#how-to-use -->
+
+          <section id="api">
+            <h1><a href="https://github.com/madapaja/jquery.selection/wiki/API">API</a></h1>
+
+            <p><a href="https://github.com/madapaja/jquery.selection/wiki/API" title="API - madapaja/jquery.selection Wiki">API Documentation</a></p>
+          </section><!-- /#api -->
+
+          <section id="demo">
+            <h1>Demo</h1>
+
+            <section id="demo-selection">
+              <h2>Input form selection operations</h2>
+
+              <section id="demo-selection-input">
+                <h3>Demo 1</h3>
+                <p>Get selected text from the text field</p>
+
+                <ul class="nav nav-tabs">
+                  <li class="active"><a href="#tab-demo-input-demo" data-toggle="tab">Demo</a></li>
+                  <li><a href="#tab-demo-input-js" data-toggle="tab">Javascript</a></li>
+                  <li><a href="#tab-demo-input-html" data-toggle="tab">HTML</a></li>
+                </ul>
+
+                <div class="tab-content">
+                  <div class="tab-pane active" id="tab-demo-input-demo">
+                    <p>
+                      <input type="text" id="input" class="span12" value="Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts" /><br />
+                      <input type="button" id="sel-input" class="btn" value="Get selected text / 選択文字列を取得" />
+                    </p>
+                    <script type="text/javascript">
+                      $(function(){
+                        $('#sel-input').click(function(){
+                          alert($('#input').selection());
+                          $('#input').focus();
+                        });
+                      });
+                    </script>
+                  </div>
+                  <div class="tab-pane" id="tab-demo-input-js">
+                    <script src="https://gist.github.com/2642215.js?file=input.js"></script>
+                  </div>
+                  <div class="tab-pane" id="tab-demo-input-html">
+                    <script src="https://gist.github.com/2642215.js?file=input.html"></script>
+                  </div>
+                </div>
+
+              </section><!-- /#demo-selection-input -->
+
+              <section id="demo-selection-textarea">
+                <h3>Demo 2</h3>
+                <p>insert/replace selected text.</p>
+
+                <ul class="nav nav-tabs">
+                  <li class="active"><a href="#tab-demo-textarea-demo" data-toggle="tab">Demo</a></li>
+                  <li><a href="#tab-demo-textarea-js" data-toggle="tab">Javascript</a></li>
+                  <li><a href="#tab-demo-textarea-html" data-toggle="tab">HTML</a></li>
+                </ul>
+
+                <div class="tab-content">
+                  <div class="tab-pane active" id="tab-demo-textarea-demo">
+                    <p>
+                      <input type="button" id="wrap-strong" value="Wrap strong tag / 強調タグで囲む" />
+                      <input type="button" id="wrap-link" value="Wrap link tag / リンクタグで囲む" />
+                    </p>
+
+                    <textarea id="textarea" class="span12" rows="12">
+                    Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
+                    Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.
+
+                    It is a paradisematic country, in which roasted parts of sentences fly into your mouth.
+                    Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.
+                    The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen.
+                    She packed her seven versalia, put her initial into the belt and made herself on the way.
+
+                    When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane.
+                    Pityful a rethoric question ran over her cheek, then
+                    </textarea>
+
+                    <p>
+                      <input type="button" id="sel-textarea" value="Get selected text / 選択テキストを取得" />
+                    </p>
+                    <script type="text/javascript">
+                      $(function(){
+                        // Wrap strong tag / 強調タグで囲む
+                        $('#wrap-strong').click(function(){
+                          $('#textarea')
+                            // insert before string '<strong>'
+                            // <strong> を選択テキストの前に挿入
+                            .selection('insert', {text: '<strong>', mode: 'before'})
+                            // insert after string '</strong>'
+                            // </strong> を選択テキストの後に挿入
+                            .selection('insert', {text: '</strong>', mode: 'after'});
+                        });
+
+                        // Wrap link tag / リンクタグで囲む
+                        $('#wrap-link').click(function(){
+                          // Get selected text / 選択テキストを取得
+                          var selText = $('#textarea').selection();
+
+                          $('#textarea')
+                            // insert before string '<a href="'
+                            // <a href=" を選択テキストの前に挿入
+                            .selection('insert', {text: '<a href="', mode: 'before'})
+                            // replace selected text by string 'http://'
+                            // 選択テキストを http:// に置き換える（http:// を選択状態に）
+                            .selection('replace', {text: 'http://'})
+                            // insert after string '">SELECTED TEXT</a>'
+                            // ">選択テキスト</a> を選択テキストの後に挿入
+                            .selection('insert', {text: '">'+ selText + '</a>', mode: 'after'});
+                        });
+
+                        // Get selected text / 選択テキストを取得
+                        $('#sel-textarea').click(function(){
+                          // alert selected text
+                          // テキストエリアの選択範囲をアラートする
+                          alert($('#textarea').selection());
+                          $('#textarea').focus();
+                        });
+                      });
+                    </script>
+                  </div>
+                  <div class="tab-pane" id="tab-demo-textarea-js">
+                    <script src="https://gist.github.com/2642215.js?file=textarea.js"></script>
+                  </div>
+                  <div class="tab-pane" id="tab-demo-textarea-html">
+                    <script src="https://gist.github.com/2642215.js?file=textarea.html"></script>
+                  </div>
+                </div>
+              </section><!-- /#demo-selection-textarea -->
+            </section><!-- /#demo-fn.selection -->
+
+            <section id="demo-jQuery-selection">
+              <h2>$.selection()</h2>
+              <p>Get selected text/html.</p>
+
+              <ul class="nav nav-tabs">
+                <li class="active"><a href="#tab-demo-selection-demo" data-toggle="tab">Demo</a></li>
+                <li><a href="#tab-demo-selection-js" data-toggle="tab">Javascript</a></li>
+                <li><a href="#tab-demo-selection-html" data-toggle="tab">HTML</a></li>
+              </ul>
+
+              <div class="tab-content">
+                <div class="tab-pane active" id="tab-demo-selection-demo">
+                  <blockquote>
+                    <p>Far far away, behind the word mountains, far from the
+                    countries Vokalia and Consonantia, there live the blind texts.<br>
+                    Separated they live in Bookmarksgrove right at the coast of the
+                    Semantics, a large language ocean. A small river named Duden
+                    flows by their place and supplies it with the necessary regelialia.</p>
+
+                    <p>It is a paradisematic country, in which roasted parts of sentences
+                    fly into your mouth. Even the all-powerful Pointing has no control
+                    about the blind texts it is an almost unorthographic life One day
+                    however a small line of blind text by the name of Lorem Ipsum decided
+                    to leave for the far World of Grammar.<br>
+                    The Big Oxmox advised her not to do so, because there were thousands
+                    of bad Commas, wild Question Marks and devious Semikoli, but the
+                    Little Blind Text didn’t listen.<br>
+                    She packed her seven versalia, put her initial into the belt and
+                    made herself on the way.</p>
+
+                    <p>When she reached the first hills of the Italic Mountains,
+                    she had a last view back on the skyline of her hometown
+                    Bookmarksgrove, the headline of Alphabet Village and the subline
+                    of her own road, the Line Lane.<br>
+                    Pityful a rethoric question ran over her cheek, then</p>
+                  </blockquote>
+
+                  <p>
+                    <input type="button" id="sel-text" value="Get selected text / 選択部分のテキストを取得" />
+                    <input type="button" id="sel-html" value="Get selected html / 選択部分のHTMLを取得" />
+                  </p>
+
+                  <h3>Result value / 取得結果</h3>
+                  <textarea id="result" readonly="readonly" class="span12" rows="6"></textarea>
+
+                  <script type="text/javascript">
+                    $(function(){
+                      // Get selected text / 選択部分のテキストを取得
+                      $('#sel-text').click(function(){
+                        $('#result').text($.selection());
+                      });
+
+                      // Get selected html / 選択部分のHTMLを取得
+                      $('#sel-html').click(function(){
+                        $('#result').text($.selection('html'));
+                      });
+                    });
+                  </script>
+                </div>
+                <div class="tab-pane" id="tab-demo-selection-js">
+                  <script src="https://gist.github.com/2642215.js?file=selection.js"></script>
+                </div>
+                <div class="tab-pane" id="tab-demo-selection-html">
+                  <script src="https://gist.github.com/2642215.js?file=selection.html"></script>
+                </div>
+              </div>
+            </section><!-- /#demo-jQuery-selection -->
+          </section><!-- /#demo -->
+
+          <section id="license">
+            <h1>License / Contact</h1>
+
+            <p>The MIT License</p>
+            <p>Copyright &copy; 2010-2012 Koji Iwasaki (<a href="https://twitter.com/madapaja">@madapaja</a>).</p>
+          </section><!-- /#license -->
+
+          <!-- X:S ZenBackWidget -->
+          <script type="text/javascript">document.write(unescape("%3Cscript")+" src='http://widget.zenback.jp/?base_uri=http%3A//madapaja.github.com/jquery.selection/&nsid=104655716941321018%3A%3A104655725799697880&rand="+Math.ceil((new Date()*1)*Math.random())+"' type='text/javascript'"+unescape("%3E%3C/script%3E"));
+          </script><!-- X:E ZenBackWidget -->
+
+        </section><!-- /#main -->
+      </div>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap">
+      <div class="container">
+        <div class="row">
+          <footer class="span12">
+            <p>jQuery.selection maintained by <a href="https://twitter.com/madapaja">@madapaja</a></p>
+            <p>Copyright &copy; 2010-2013 Koji Iwasaki (@madapaja).</p>
+          </footer>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
