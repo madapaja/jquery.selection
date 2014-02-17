@@ -135,7 +135,7 @@
                     element.setSelectionRange(toRange.start, toRange.end);
                 }
             } catch (e) {
-                /* あきらめる */
+                /* give up */
             }
         },
 
