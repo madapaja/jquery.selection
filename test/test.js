@@ -1,6 +1,8 @@
-/* TODO: テストの整理とリファクタリング */
+/* TODO: refactoring */
 
 var $body = $('body');
+
+$body.prepend($('<h1/>').text('jQuery: ' + jQuery.prototype.jquery));
 
 $body.append('<input id="input" type="text" value="あいうえおかきくけこさしすせそ">');
 $body.append('<textarea id="textarea">あいうえお\nかきくけこさしすせそ\n<h1>たちつてと</h1></textarea>');
