@@ -1,7 +1,7 @@
 /*!
  * jQuery.selection - jQuery Plugin
  *
- * Copyright (c) 2010-2012 IWASAKI Koji (@madapaja).
+ * Copyright (c) 2010-2014 IWASAKI Koji (@madapaja).
  * http://blog.madapaja.net/
  * Under The MIT License
  *
