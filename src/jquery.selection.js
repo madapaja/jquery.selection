@@ -157,7 +157,7 @@
          */
         _caretMode: function(caret) {
             caret = caret || "keep";
-            if (caret == false) {
+            if (caret === false) {
                 caret = 'end';
             }
 
@@ -295,7 +295,6 @@
                  */
                 case 'getPos':
                     return _CaretOperation.getPos(this[0]);
-                    break;
 
                 /**
                  * selection('setPos', opts)
@@ -308,7 +307,6 @@
                     return this.each(function() {
                         _CaretOperation.setPos(this, opts);
                     });
-                    break;
 
                 /**
                  * selection('replace', opts)
@@ -321,7 +319,6 @@
                     return this.each(function() {
                         _CaretOperation.replace(this, opts.text, opts.caret);
                     });
-                    break;
 
                 /**
                  * selection('insert', opts)
@@ -340,8 +337,6 @@
                         }
                     });
 
-                    break;
-
                 /**
                  * selection('get')
                  * 選択されている文字列を取得
@@ -349,9 +344,9 @@
                  * @return  {String}    return
                  */
                 case 'get':
+                    /* falls through */
                 default:
                     return _CaretOperation.getText(this[0]);
-                    break;
             }
 
             return this;
