@@ -57,8 +57,7 @@
                 element.focus();
 
                 var range = doc.selection.createRange(),
-                    range2 = doc.body.createTextRange(),
-                    tmpLength;
+                    range2 = doc.body.createTextRange();
 
                 res.text = range.text;
 
@@ -110,9 +109,9 @@
         setPos: function(element, toRange, caret) {
             caret = this._caretMode(caret);
 
-            if (caret == 'start') {
+            if (caret === 'start') {
                 toRange.end = toRange.start;
-            } else if (caret == 'end') {
+            } else if (caret === 'end') {
                 toRange.start = toRange.end;
             }
 
@@ -241,7 +240,7 @@
          * @return  {String}    return
          */
         selection: function(mode) {
-            var getText = ((mode || 'text').toLowerCase() == 'text');
+            var getText = ((mode || 'text').toLowerCase() === 'text');
 
             try {
                 if (win.getSelection) {
@@ -330,7 +329,7 @@
                  */
                 case 'insert':
                     return this.each(function() {
-                        if (opts.mode == 'before') {
+                        if (opts.mode === 'before') {
                             _CaretOperation.insertBefore(this, opts.text, opts.caret);
                         } else {
                             _CaretOperation.insertAfter(this, opts.text, opts.caret);
