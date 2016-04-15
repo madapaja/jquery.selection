@@ -248,18 +248,22 @@
                         // get text
                         return win.getSelection().toString();
                     } else {
-                        // get html
                         var sel = win.getSelection(), range;
-
+                        var arrayOfRanges = [];
                         if (sel.getRangeAt) {
-                            range = sel.getRangeAt(0);
+                            for(var rangeIndex = 0; rangeIndex < sel.rangeCount; rangeIndex++){
+                                arrayOfRanges.push(sel.getRangeAt(rangeIndex));
+                            }
                         } else {
                             range = doc.createRange();
                             range.setStart(sel.anchorNode, sel.anchorOffset);
                             range.setEnd(sel.focusNode, sel.focusOffset);
                         }
-
-                        return $('<div></div>').append(range.cloneContents()).html();
+                        var $tempDiv = $('<div></div>');
+                        for(var arrayIndex in arrayOfRanges){
+                            $tempDiv.append(arrayOfRanges[arrayIndex].cloneContents());
+                        }
+                        return $tempDiv.html();
                     }
                 } else if (doc.selection) {
                     if (getText) {
