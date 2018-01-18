@@ -1,0 +1,22 @@
+{
+  "name": "jquery.selection",
+  "version": "1.0.1",
+  "description": "jQuery.selection is a jQuery plugin that operate selection text/caret.",
+  "keywords": [
+    "selection"
+  ],
+  "homepage": "http://madapaja.github.io/jquery.selection/",
+  "author": "Koji Iwasaki (http://blog.madapaja.net)",
+  "main": "./src/jquery.selection.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/madapaja/jquery.selection.git"
+  },
+  "bugs": {
+    "url": "https://github.com/madapaja/jquery.selection/issues"
+  },
+  "license": {
+    "type": "MIT",
+    "url": "https://raw.github.com/madapaja/jquery.selection/master/src/jquery.selection.js"
+  }
+}
